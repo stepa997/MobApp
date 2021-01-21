@@ -40,6 +40,12 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v){
                 if(name.getText().toString().equals(NameAdmin) && pa.getText().toString().equals(PaAdmin)) {
                     Intent intent = new Intent(MainActivity.this, KupacActivity.class);
+                    intent.putExtra("NameAdmin", getIntent().getStringExtra("NameAdmin"));
+                    intent.putExtra("PaAdmin", getIntent().getStringExtra("PaAdmin"));
+                    intent.putExtra("Name", getIntent().getStringExtra("Name"));
+                    intent.putExtra("Surname", getIntent().getStringExtra("Surname"));
+                    intent.putExtra("Number", getIntent().getStringExtra("Number"));
+                    intent.putExtra("Adress", getIntent().getStringExtra("Adress"));
                     startActivity(intent);
                 } else {
                     poruka = findViewById(R.id.poruka);

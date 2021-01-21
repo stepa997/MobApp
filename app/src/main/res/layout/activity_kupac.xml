@@ -13,7 +13,7 @@
         android:layout_width="183dp"
         android:layout_height="56dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="470dp"
+        android:layout_marginBottom="520dp"
         android:layout_toStartOf="@+id/name"
         android:layout_toLeftOf="@+id/name"
         android:text="@string/profil"

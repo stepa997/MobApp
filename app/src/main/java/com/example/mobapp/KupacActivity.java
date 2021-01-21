@@ -58,6 +58,7 @@ public class KupacActivity extends AppCompatActivity {
             @SuppressLint("ResourceAsColor")
             @Override
             public void onClick(View v){
+                Bundle extras = getIntent().getExtras();
                 naziv.setVisibility(TextView.INVISIBLE);
                 podaci.setEnabled(true);
                 profile.setTextColor(R.color.purple_200);
@@ -65,23 +66,47 @@ public class KupacActivity extends AppCompatActivity {
                 korpa.setVisibility(Button.INVISIBLE);
                 TableRow tableRow = (TableRow) podaci.getChildAt(0);
                 TextView textView = (TextView) tableRow.getChildAt(1);
-                kupac.setKorisnicko_ime(textView.getText().toString());
+                System.out.println("Extras " + getIntent().getStringExtra("NameAdmin"));
+                if (getIntent().getStringExtra("NameAdmin") != null) {
+                    kupac.setKorisnicko_ime(getIntent().getStringExtra("NameAdmin"));
+                    textView.setText(kupac.getKorisnicko_ime());
+                } else kupac.setKorisnicko_ime(textView.getText().toString());
+
 
                 tableRow = (TableRow) podaci.getChildAt(1);
                 textView = (TextView) tableRow.getChildAt(1);
-                kupac.setIme(textView.getText().toString());
+                if (getIntent().getStringExtra("Name") != null) {
+                    kupac.setIme(getIntent().getStringExtra("Name"));
+                    textView.setText(kupac.getIme());
+                } else kupac.setIme(textView.getText().toString());
 
                 tableRow = (TableRow) podaci.getChildAt(2);
                 textView = (TextView) tableRow.getChildAt(1);
-                kupac.setPrezime(textView.getText().toString());
+                if (getIntent().getStringExtra("Surname") != null) {
+                    kupac.setPrezime(getIntent().getStringExtra("Surname"));
+                    textView.setText(kupac.getPrezime());
+                } else kupac.setPrezime(textView.getText().toString());
 
                 tableRow = (TableRow) podaci.getChildAt(3);
                 textView = (TextView) tableRow.getChildAt(1);
-                kupac.setBroj(textView.getText().toString());
+                if (getIntent().getStringExtra("Number") != null) {
+                    kupac.setBroj(getIntent().getStringExtra("Number"));
+                    textView.setText(kupac.getBroj());
+                } else kupac.setBroj(textView.getText().toString());
 
                 tableRow = (TableRow) podaci.getChildAt(4);
                 textView = (TextView) tableRow.getChildAt(1);
-                kupac.setAdresa(textView.getText().toString());
+                if (getIntent().getStringExtra("Adress") != null) {
+                    kupac.setAdresa(getIntent().getStringExtra("Adress"));
+                    textView.setText(kupac.getAdresa());
+                } else kupac.setAdresa(textView.getText().toString());
+
+                tableRow = (TableRow) podaci.getChildAt(5);
+                textView = (TextView) tableRow.getChildAt(1);
+                if (getIntent().getStringExtra("PaAdmin") != null) {
+                    kupac.setPa(getIntent().getStringExtra("PaAdmin"));
+                    textView.setText(kupac.getPa());
+                } else kupac.setPa(textView.getText().toString());
             }
         });
 
@@ -137,6 +162,10 @@ public class KupacActivity extends AppCompatActivity {
 
                 intent.putExtra("NameAdmin", kupac.getKorisnicko_ime());
                 intent.putExtra("PaAdmin", kupac.getPa());
+                intent.putExtra("Name", kupac.getIme());
+                intent.putExtra("Surname", kupac.getPrezime());
+                intent.putExtra("Number", kupac.getBroj());
+                intent.putExtra("Adress", kupac.getAdresa());
                 startActivity(intent);
             }
         });
@@ -193,6 +222,7 @@ public class KupacActivity extends AppCompatActivity {
         });
 
         dodaj.setOnClickListener(new View.OnClickListener(){
+            @SuppressLint("ResourceAsColor")
             @Override
             public void onClick(View v){
                 if(dodaj.getText().toString() == "Poruci") {
