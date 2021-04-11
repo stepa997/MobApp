@@ -267,6 +267,9 @@ public class KupacActivity extends AppCompatActivity {
                 proizvod.setVisibility(ImageView.INVISIBLE);
                 opis.setVisibility(Button.INVISIBLE);
                 int suma = poruci[0]*820+poruci[1]*770+poruci[2]*350;
+                naziv.setText("Lipov med: " + poruci[0]);
+                naziv.setText("Kraljev med: " + poruci[1]);
+                naziv.setText("Propolis: " + poruci[2]);
                 naziv.setText("Poruceno je: "+ suma  + " dinara.");
                 korpa.setTextColor(R.color.purple_200);
                 odutani.setVisibility(Button.VISIBLE);
